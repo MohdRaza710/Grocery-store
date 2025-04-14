@@ -50,7 +50,7 @@ function Navbar({ cartCount }) {
     return (
         <AppBar position="static" sx={{ backgroundColor: '#2E3B55', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)', borderRadius: '8px' }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link to="/home" sx={{ display: { xs: 'block', sm: 'none' } }}>
+                <Link to="/" sx={{ display: { xs: 'block', sm: 'none' } }}>
                     <Box
                         component="img"
                         src="https://i.ibb.co/PZQdxx6t/Chat-GPT-Image-Apr-14-2025-03-59-42-PM.png"
