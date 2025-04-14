@@ -107,7 +107,7 @@ function Navbar({ cartCount }) {
                 {/* Desktop Buttons */}
                 <div className="hidden sm:flex gap-2">
                     <Link
-                        to="/"
+                        to="/home"
                         className="font-bold text-yellow-400 rounded-lg px-4 py-2 hover:text-white transition-colors duration-200 hover:bg-yellow-400"
                     >
                         Home

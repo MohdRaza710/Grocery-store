@@ -36,7 +36,7 @@ function App() {
         <Navbar cartCount={cartItems.length} />
         <Routes>
           <Route
-            path="/"
+            path="/home"
             element={
               <motion.div
                 initial="initial"
@@ -101,7 +101,7 @@ function App() {
                 variants={pageVariants}
                 transition={{ duration: 0.5 }}
               >
-                <Products onAddToCart={handleAddToCart} />
+                <Home onAddToCart={handleAddToCart} />
               </motion.div>
             }
           />
