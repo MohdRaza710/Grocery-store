@@ -34,7 +34,7 @@ function Navbar({ cartCount }) {
             <List>
                 {['Home', 'Products', 'About'].map((text) => (
                     <ListItem key={text} disablePadding>
-                        <Link classname="flex" component="a" to={`/${text.toLowerCase()}`}>
+                        <Link component="a" to={`/${text.toLowerCase()}`}>
                             <ListItemText primary={text} />
                         </Link>
                     </ListItem>
