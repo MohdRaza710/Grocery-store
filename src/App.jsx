@@ -36,7 +36,7 @@ function App() {
         <Navbar cartCount={cartItems.length} />
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={
               <motion.div
                 initial="initial"

@@ -36,7 +36,7 @@ function Navbar({ cartCount }) {
             <List>
                 {['Home', 'Products', 'About'].map((text) => (
                     <ListItem key={text} disablePadding>
-                        <ListItemButton component="a" href={`/${text.toLowerCase()}`}>
+                        <ListItemButton component="a" to={`/${text.toLowerCase()}`}>
                             <ListItemText primary={text} />
                         </ListItemButton>
                     </ListItem>
@@ -108,8 +108,8 @@ function Navbar({ cartCount }) {
 
                 {/* Desktop Buttons */}
                 <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
-                    <Button color="inherit" href="/home" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Home</Button>
-                    <Button color="inherit" href="/" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Products</Button>
+                    <Button color="inherit" href="/" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Home</Button>
+                    <Button color="inherit" href="/products" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Products</Button>
                     <Button color="inherit" href="/about" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>About</Button>
                     <Button color="inherit" href="/cart" sx={{ mr: '5', fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>
                         <ShoppingCartIcon /> ({cartCount})
