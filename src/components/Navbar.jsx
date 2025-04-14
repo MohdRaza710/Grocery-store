@@ -4,8 +4,6 @@ import Toolbar from '@mui/material/Toolbar';
 import { Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -107,14 +105,35 @@ function Navbar({ cartCount }) {
                 </Drawer>
 
                 {/* Desktop Buttons */}
-                <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
-                    <Link color="inherit" to="/" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Home</Link>
-                    <Link color="inherit" to="/products" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Products</Link>
-                    <Link color="inherit" to="/about" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>About</Link>
-                    <Link color="inherit" to="/cart" sx={{ mr: '5', fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>
-                        <ShoppingCartIcon /> ({cartCount})
+                <div className="hidden sm:flex gap-2">
+                    <Link
+                        to="/"
+                        className="font-bold text-yellow-400 rounded-lg px-4 py-2 hover:text-white transition-colors duration-200 hover:bg-yellow-400"
+                    >
+                        Home
                     </Link>
-                </Box>
+                    <Link
+                        to="/products"
+                        className="font-bold text-yellow-400 rounded-lg px-4 py-2 hover:text-white transition-colors duration-200 hover:bg-yellow-400"
+                    >
+                        Products
+                    </Link>
+                    <Link
+                        to="/about"
+                        className="font-bold text-yellow-400 rounded-lg px-4 py-2 hover:text-white transition-colors duration-200 hover:bg-yellow-400"
+                    >
+                        About
+                    </Link>
+                    <Link
+                        to="/cart"
+                        className="font-bold text-yellow-400 rounded-lg mr-5 flex items-center gap-1 transition-colors duration-200 px-4 py-2
+                         hover:bg-yellow-400 hover:text-white"
+                    >
+                        <ShoppingCartIcon />
+                        ({cartCount})
+                    </Link>
+                </div>
+
             </Toolbar>
         </AppBar>
     );

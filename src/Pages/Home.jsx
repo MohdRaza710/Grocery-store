@@ -1,36 +1,16 @@
 import React from 'react';
-import { Grid, Typography, Card, CardContent, CardMedia, Button } from '@mui/material';
-import { keyframes } from '@emotion/react';
+import { Grid, Typography, Card, CardContent, CardMedia } from '@mui/material';
+import { motion } from 'framer-motion';
 
-// Keyframes for animations
-const fadeIn = keyframes`
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-
-// Reusable ProductCard component with CSS animation
+// Reusable ProductCard component with Framer Motion animations
 function ProductCard({ image, title, description }) {
         return (
-                <div
-                        style={{
-                                transition: 'transform 0.3s, box-shadow 0.3s',
-                                transform: 'scale(1)',
-                                animation: `${fadeIn} 0.5s ease-in-out`,
-                        }}
-                        onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'scale(1.05)';
-                                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'scale(1)';
-                                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-                        }}
+                <motion.div
+                        whileHover={{ scale: 1.05, boxShadow: '0 8px 30px rgba(0, 0, 0, 0.2)' }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
                 >
                         <Card style={{ maxWidth: 394, margin: 'auto', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
                                 <CardMedia component="img" height="140" width="150" image={image} alt={title} />
@@ -43,7 +23,7 @@ function ProductCard({ image, title, description }) {
                                         </Typography>
                                 </CardContent>
                         </Card>
-                </div>
+                </motion.div>
         );
 }
 
@@ -69,12 +49,10 @@ function Home() {
 
         return (
                 <div>
-                        <div
-                                style={{
-                                        opacity: 1,
-                                        transform: 'translateY(0)',
-                                        animation: `${fadeIn} 0.8s ease-in-out`,
-                                }}
+                        <motion.div
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
                         >
                                 <Typography
                                         variant="h2"
@@ -99,7 +77,7 @@ function Home() {
                                 >
                                         Your one-stop shop for all your grocery needs.
                                 </Typography>
-                        </div>
+                        </motion.div>
 
                         {/* Categories Section */}
                         <div style={{ margin: '20px 0' }}>
@@ -109,27 +87,25 @@ function Home() {
                                 <Grid container spacing={2}>
                                         {categories.map((category, index) => (
                                                 <Grid item xs={6} sm={4} key={index}>
-                                                        <Card
-                                                                style={{
-                                                                        textAlign: 'center',
-                                                                        padding: '10px',
-                                                                        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-                                                                        transition: 'transform 0.3s, box-shadow 0.3s',
-                                                                        animation: `${fadeIn} 0.5s ease-in-out`,
-                                                                }}
-                                                                onMouseEnter={(e) => {
-                                                                        e.currentTarget.style.transform = 'scale(1.05)';
-                                                                        e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.2)';
-                                                                }}
-                                                                onMouseLeave={(e) => {
-                                                                        e.currentTarget.style.transform = 'scale(1)';
-                                                                        e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-                                                                }}
+                                                        <motion.div
+                                                                whileHover={{ scale: 1.05, boxShadow: '0 8px 30px rgba(0, 0, 0, 0.2)' }}
+                                                                whileTap={{ scale: 0.95 }}
+                                                                initial={{ opacity: 0, y: 20 }}
+                                                                animate={{ opacity: 1, y: 0 }}
+                                                                transition={{ duration: 0.5, delay: index * 0.2 }}
                                                         >
-                                                                <Typography variant="h6" style={{ fontWeight: 'bold' }}>
-                                                                        {category}
-                                                                </Typography>
-                                                        </Card>
+                                                                <Card
+                                                                        style={{
+                                                                                textAlign: 'center',
+                                                                                padding: '10px',
+                                                                                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                                                                        }}
+                                                                >
+                                                                        <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+                                                                                {category}
+                                                                        </Typography>
+                                                                </Card>
+                                                        </motion.div>
                                                 </Grid>
                                         ))}
                                 </Grid>
