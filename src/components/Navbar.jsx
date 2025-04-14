@@ -109,7 +109,7 @@ function Navbar({ cartCount }) {
                 {/* Desktop Buttons */}
                 <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
                     <Link color="inherit" to="/" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Home</Link>
-                    <Link color="inherit" to="/home" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Products</Link>
+                    <Link color="inherit" to="/products" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>Products</Link>
                     <Link color="inherit" to="/about" sx={{ fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>About</Link>
                     <Link color="inherit" to="/cart" sx={{ mr: '5', fontWeight: 'bold', color: '#FFD700', borderRadius: '8px' }}>
                         <ShoppingCartIcon /> ({cartCount})
