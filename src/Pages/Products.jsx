@@ -93,7 +93,7 @@ function Products({ onAddToCart }) {
                         }}>
                             <Card
                                 sx={{
-                                    width: '158px',
+                                    width: '150px',
                                     height: '1',
                                     margin: '4px',
                                     mt: '20px',
