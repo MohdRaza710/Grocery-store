@@ -86,7 +86,7 @@ function Products({ onAddToCart }) {
                     <Grid item xs={6} sm={6} md={4} lg={3}>
                         <Card
                             sx={{
-                                width: '139px',
+                                width: '140px',
                                 mt: 2,
                                 border: '1px solid #ccc',
                                 borderRadius: '12px',
