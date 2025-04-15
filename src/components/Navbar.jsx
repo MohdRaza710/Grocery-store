@@ -25,22 +25,20 @@ function Navbar({ cartCount }) {
     };
 
     const drawerContent = (
-        <Box
-            sx={{ width: 250 }}
+        <div
+            clasname="width-20"
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
             <List>
-                {['Home', 'Products', 'About'].map((text) => (
-                    <ListItem key={text} disablePadding>
+                {['Home', 'Products', 'About'].map((text) => 
                         <Link component="a" to={`/${text.toLowerCase()}`}>
                             <ListItemText primary={text} />
                         </Link>
-                    </ListItem>
                 ))}
             </List>
-        </Box>
+        </div>
     );
 
 
