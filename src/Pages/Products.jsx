@@ -79,73 +79,77 @@ function Products({ onAddToCart }) {
     ];
 
   
-
 return (
-        <div style={{ width: '100%' }}>
-            <Grid container spacing={2}>
-                {products.map((product, index) => (
-                    <Grow in={true} timeout={500 + index * 100} key={product.id}>
-                        <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-                            '@media (min-width: 1024px)': {
-                                marginLeft: '23px',
-                            }
-                        }}>
-                            <Card
-                                sx={{
-                                    width: '145px',
-                                    height: '1',
-                                    mt: '20px',
-                                    border: '1px solid #ccc',
-                                    borderRadius: '12px',
-                                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                                    transition: 'transform 0.3s, box-shadow 0.3s',
-                                    '&:hover': {
-                                        transform: 'scale(1.05)',
-                                        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
-                                    },
-                                }}
-                            >
-                                <CardContent>
-                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-                                        {product.name}
-                                    </Typography>
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        style={{
-                                            width: '100%',
-                                            height: '100px',
-                                            objectFit: 'cover',
-                                            borderRadius: '8px',
-                                            margin: '10px 0',
-                                        }}
-                                    />
-                                    <Typography color="text.secondary" sx={{ fontSize: '1rem' }}>
-                                        Price: ${product.price.toFixed(2)}
-                                    </Typography>
-                                    <Typography variant='body2' color="text.secondary" >
-                                        {product.description || 'No description available.'}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions sx={{ justifyContent: 'center' }}>
-                                    <Button
-                                        variant="contained"
-                                        size="small"
-                                        sx={{ backgroundColor: '#4CAF50', color: 'white', '&:hover': { backgroundColor: '#45a049', } }}
-                                        color="primary"
-                                        onClick={() => onAddToCart(product)}
-                                        style={{ marginTop: "0px", marginBottom: "0px", width: "100%", height: "40px", fontSize: "14px", fontWeight: "bold", borderRadius: "8px", padding: "0px", }}
-                                    >
-                                        Add to Cart
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </Grid>
-                    </Grow>
-                ))}
-            </Grid>
-        </div >
-    );
-}
-
-export default Products
+    <div style={{ width: '100%' }}>
+        <Grid container spacing={2} justifyContent="center">
+            {products.map((product, index) => (
+                <Grow in={true} timeout={500 + index * 100} key={product.id}>
+                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                        <Card
+                            sx={{
+                                width: '100%',
+                                maxWidth: { xs: '100%', sm: '300px' },
+                                height: 'auto',
+                                mt: '20px',
+                                border: '1px solid #ccc',
+                                borderRadius: '12px',
+                                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                                transition: 'transform 0.3s, box-shadow 0.3s',
+                                mx: 'auto',
+                                '&:hover': {
+                                    transform: 'scale(1.05)',
+                                    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
+                                },
+                            }}
+                        >
+                            <CardContent>
+                                <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: { xs: '1rem', sm: '1.2rem' } }}>
+                                    {product.name}
+                                </Typography>
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    style={{
+                                        width: '100%',
+                                        height: '150px',
+                                        objectFit: 'cover',
+                                        borderRadius: '8px',
+                                        margin: '10px 0',
+                                    }}
+                                />
+                                <Typography color="text.secondary" sx={{ fontSize: '1rem' }}>
+                                    Price: ${product.price.toFixed(2)}
+                                </Typography>
+                                <Typography variant='body2' color="text.secondary">
+                                    {product.description || 'No description available.'}
+                                </Typography>
+                            </CardContent>
+                            <CardActions sx={{ justifyContent: 'center' }}>
+                                <Button
+                                    variant="contained"
+                                    size="small"
+                                    sx={{
+                                        backgroundColor: '#4CAF50',
+                                        color: 'white',
+                                        '&:hover': { backgroundColor: '#45a049' },
+                                        mt: 1,
+                                        mb: 1,
+                                        width: '90%',
+                                        fontSize: '14px',
+                                        fontWeight: 'bold',
+                                        borderRadius: '8px',
+                                        padding: '8px 0',
+                                    }}
+                                    onClick={() => onAddToCart(product)}
+                                >
+                                    Add to Cart
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                </Grow>
+            ))}
+        </Grid>
+    </div>
+);
+    export default Products;
