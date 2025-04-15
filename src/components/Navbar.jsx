@@ -6,13 +6,9 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
 
 function Navbar({ cartCount }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -25,21 +21,19 @@ function Navbar({ cartCount }) {
     };
 
     const drawerContent = (
-        <div
-            clasname="width-20"
+        <Box
+            className="width-20"
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
-        > 
-                {['Home', 'Products', 'About'].map((text) => 
-                        <Link key={text} component="a" to={`/${text.toLowerCase()}`}>
-                            <ListItemText primary={text} />
-                        </Link>
-                ))}
-        </div>
+        >
+            {['Home', 'Products', 'About'].map((text) => (
+                <Link key={text} to={`/${text.toLowerCase()}`}>
+                    <ListItemText primary={text} />
+                </Link>
+            ))}
+        </Box>
     );
-
-
 
     return (
         <AppBar position="static" sx={{ backgroundColor: '#2E3B55', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)', borderRadius: '8px' }}>
@@ -129,7 +123,6 @@ function Navbar({ cartCount }) {
                         ({cartCount})
                     </Link>
                 </div>
-
             </Toolbar>
         </AppBar>
     );
