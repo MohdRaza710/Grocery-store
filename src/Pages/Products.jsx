@@ -106,7 +106,7 @@ function Products({ onAddToCart }) {
                                     src={product.image}
                                     alt={product.name}
                                     style={{
-                                        width: '100%',
+                                        width: '100px',
                                         height: '150px',
                                         objectFit: 'cover',
                                         borderRadius: '8px',
