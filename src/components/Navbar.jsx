@@ -30,14 +30,12 @@ function Navbar({ cartCount }) {
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
-        >
-            <List>
+        > 
                 {['Home', 'Products', 'About'].map((text) => 
-                        <Link component="a" to={`/${text.toLowerCase()}`}>
+                        <Link key={text} component="a" to={`/${text.toLowerCase()}`}>
                             <ListItemText primary={text} />
                         </Link>
                 ))}
-            </List>
         </div>
     );
 
