@@ -95,7 +95,6 @@ function Products({ onAddToCart }) {
                                 sx={{
                                     width: '150px',
                                     height: '1',
-                                    margin: '4px',
                                     mt: '20px',
                                     border: '1px solid #ccc',
                                     borderRadius: '12px',
