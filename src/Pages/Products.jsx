@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Grow from '@mui/material/Grow';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Grid,
+    Card,
+    CardContent,
+    CardMedia,
+    Button,
+    CardActions,
+    InputBase,
+    IconButton,
+    Grow,
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import MenuIcon from '@mui/icons-material/Menu';
-import { styled, alpha } from '@mui/material/styles';
 
 
 
 
-function Products({ onAddToCart }) {
+const Products = ({ onAddToCart }) => {
+    const [searchQuery, setSearchQuery] = useState('');
     const products = [
         { id: 1, name: 'Apple', description: 'Fresh red apple', price: 1.00, image: 'https://i.pinimg.com/736x/d9/68/c2/d968c2fe95629e238b04ee34599c5013.jpg' },
         { id: 2, name: 'Banana', description: 'Sweet ripe bananas', price: 0.50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT11Wrho0qqXtSYNly73nDZWZZlOzDOKIB_cQ&s' },
@@ -88,66 +89,36 @@ function Products({ onAddToCart }) {
         { id: 66, name: 'Potato', price: 0.25, image: 'https://img.freepik.com/premium-photo/fresh-potato-white-background_461160-3961.jpg', description: 'Starchy tuber' },
     ];
 
-    const [searchQuery, setSearchQuery] = useState('');
 
-    const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
-
-    const filteredproducts = products.filter((product) =>
+    const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    const Search = styled('div')(({ theme }) => ({
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(1),
-            width: 'auto',
-        },
-    }));
-
-    const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
-
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        width: '100%',
-        '& .MuiInputBase-input': {
-            padding: theme.spacing(1, 1, 1, 0),
-            paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-            transition: theme.transitions.create('width'),
-            [theme.breakpoints.up('sm')]: {
-                width: '12ch',
-                '&:focus': {
-                    width: '20ch',
-                },
-            },
-        },
-    }));
-
     return (
-        <div style={{ width: '100%' }}>
-            <Grid container spacing={2}>
-                {products.map((product, index) => (
-                    <Grow in={true} timeout={500 + index * 100} key={product.id}>
-                        <Grid item xs={6} sm={6} md={4} lg={3}>
-                            <Card
-                                sx={{
-                                    width: '140px',
+        <div>
+            <AppBar position="static" sx={{ backgroundColor: '#4caf50' }}>
+                <Toolbar>
+                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                        Product List
+                    </Typography>
+                    <div style={{ display: 'flex', alignItems: 'center', background: 'white', borderRadius: 4, paddingLeft: 8 }}>
+                        <SearchIcon />
+                        <InputBase
+                            placeholder="Search…"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            sx={{ ml: 1, flex: 1 }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </div>
+                </Toolbar>
+            </AppBar>
+
+            <Grid container spacing={2} sx={{ padding: 2 }}>
+                {filteredProducts.map((product) => (
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
+                        <Grow in timeout={500}>
+                            <Card sx={{ width: '140px',
                                     mt: 2,
                                     border: '1px solid #ccc',
                                     borderRadius: '12px',
@@ -156,93 +127,38 @@ function Products({ onAddToCart }) {
                                     '&:hover': {
                                         transform: 'scale(1.05)',
                                         boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
-                                    },
-                                }}
-                            >
+                                    },}}>
+                                <CardMedia
+                                    component="img"
+                                width="124px"
+                                height="124px"
+                                style={{ objectFit: 'cover', borderRadius: '8px', margin: '10px 0' }}
+                                image={product.image}
+                                alt={product.name}
+                    />
                                 <CardContent>
-                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: { xs: '1rem', sm: '1.2rem' } }}>
+                                    <Typography variant="h6" gutterBottom>
                                         {product.name}
                                     </Typography>
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        style={{
-                                            width: '124px',
-                                            height: '124px',
-                                            objectFit: 'cover',
-                                            borderRadius: '8px',
-                                            margin: '10px 0',
-                                        }}
-                                    />
-                                    <Typography color="text.secondary" sx={{ fontSize: '1rem' }}>
-                                        Price: ${product.price.toFixed(2)}
-                                    </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        {product.description || 'No description available.'}
+                                        {product.description}
+                                    </Typography>
+                                    <Typography variant="subtitle1" color="primary" sx={{ mt: 1 }}>
+                                        ${product.price.toFixed(2)}
                                     </Typography>
                                 </CardContent>
-                                <CardActions sx={{ justifyContent: 'center' }}>
-                                    <Button
-                                        variant="contained"
-                                        size="small"
-                                        sx={{
-                                            backgroundColor: '#4CAF50',
-                                            color: 'white',
-                                            '&:hover': { backgroundColor: '#45a049' },
-                                            mt: 1,
-                                            mb: 1,
-                                            width: '90%',
-                                            fontSize: '14px',
-                                            fontWeight: 'bold',
-                                            borderRadius: '8px',
-                                            padding: '8px 0',
-                                        }}
-                                        onClick={() => onAddToCart(product)}
-                                    >
+                                <CardActions sx={{ mt: 'auto' }}>
+                                    <Button size="small" variant="contained" color="primary" onClick={() => onAddToCart(product)}>
                                         Add to Cart
                                     </Button>
                                 </CardActions>
                             </Card>
-                        </Grid>
-                    </Grow>
+                        </Grow>
+                    </Grid>
                 ))}
-                <Box sx={{ flexGrow: 1 }}>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton
-                                size="large"
-                                edge="start"
-                                color="inherit"
-                                aria-label="open drawer"
-                                sx={{ mr: 2 }}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Search>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                    value={searchQuery}
-                                    onChange={handleSearchChange}
-                                />
-                            </Search>
-                        </Toolbar>
-                    </AppBar>
-                    <Box sx={{ p: 3 }}>
-                        <Grid container spacing={2} sx={{ mt: 2, alignItems: 'stretch' }}>
-                            {filteredproducts.map((product, index) => (
-                                <Grid item key={index} xs={12} sm={6} md={4}>
-                                    <Products product={product} />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Box>
-                </Box>
             </Grid>
         </div>
     );
 };
+
 export default Products;
