@@ -96,7 +96,7 @@ const Products = ({ onAddToCart }) => {
 
     return (
         <div>
-            <AppBar position="static" sx={{ backgroundColor: '#4caf50' }}>
+            <AppBar position="static" sx={{ backgroundColor: '#4caf50', borderRadius: 3 }}>
                 <Toolbar>
                     <Typography variant="h6" sx={{ flexGrow: 1 }}>
                         Product List
@@ -107,7 +107,7 @@ const Products = ({ onAddToCart }) => {
                             placeholder="Search…"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            sx={{ ml: 1, flex: 1 }}
+                            sx={{ ml: 1, flex: 1, borderRadius: 3 }}
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
