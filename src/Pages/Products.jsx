@@ -80,20 +80,18 @@ function Products({ onAddToCart }) {
 
   return (
     <div style={{ width: '100%' }}>
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container spacing={2}>
             {products.map((product, index) => (
                 <Grow in={true} timeout={500 + index * 100} key={product.id}>
                     <Grid item xs={6} sm={6} md={4} lg={3}>
                         <Card
                             sx={{
                                 width: '100%',
-                                height: 'auto',
                                 mt: 2,
                                 border: '1px solid #ccc',
                                 borderRadius: '12px',
                                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                                 transition: 'transform 0.3s, box-shadow 0.3s',
-                                mx: 'auto',
                                 '&:hover': {
                                     transform: 'scale(1.05)',
                                     boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
@@ -101,15 +99,7 @@ function Products({ onAddToCart }) {
                             }}
                         >
                             <CardContent>
-                                <Typography
-                                    variant="h6"
-                                    component="div"
-                                    sx={{
-                                        fontWeight: 'bold',
-                                        fontSize: { xs: '1rem', sm: '1.2rem' },
-                                        textAlign: 'center'
-                                    }}
-                                >
+                                <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: { xs: '1rem', sm: '1.2rem' } }}>
                                     {product.name}
                                 </Typography>
                                 <img
@@ -123,17 +113,10 @@ function Products({ onAddToCart }) {
                                         margin: '10px 0',
                                     }}
                                 />
-                                <Typography
-                                    color="text.secondary"
-                                    sx={{ fontSize: '1rem', textAlign: 'center' }}
-                                >
+                                <Typography color="text.secondary" sx={{ fontSize: '1rem' }}>
                                     Price: ${product.price.toFixed(2)}
                                 </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={{ textAlign: 'center', mt: 1 }}
-                                >
+                                <Typography variant="body2" color="text.secondary">
                                     {product.description || 'No description available.'}
                                 </Typography>
                             </CardContent>
