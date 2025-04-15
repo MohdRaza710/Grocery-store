@@ -63,17 +63,18 @@ function Navbar({ cartCount }) {
                         Grocery Store
                     </Box>
                 </Box>
-                <Button
-                    color="inherit"
-                    href="/cart"
-                    sx={{
-                        display: { xs: 'flex', sm: 'none' },
-                        fontWeight: 'bold',
-                        color: '#FFD700',
-                    }}
-                >
-                    <ShoppingCartIcon /> ({cartCount})
-                </Button>
+                <Link
+                   to="/cart"
+                style={{
+                display: 'flex',
+                fontWeight: 'bold',
+                color: '#FFD700',
+                textDecoration: 'none',
+                alignItems: 'center',
+             }}
+               >
+                <ShoppingCartIcon /> ({cartCount})
+                </Link>
                 <IconButton
                     size="large"
                     edge="end"
