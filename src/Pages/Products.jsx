@@ -152,4 +152,5 @@ return (
         </Grid>
     </div>
 );
+};
     export default Products;
