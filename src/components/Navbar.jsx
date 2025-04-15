@@ -22,7 +22,7 @@ function Navbar({ cartCount }) {
 
     const drawerContent = (
         <Box
-            sx={{ width: 250 }}
+            sx={{ width: 250 , height: '100%', backgroundColor: '#2E3B55', color: '#FFD700', padding: 2, borderRadius: '8px'  }}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
