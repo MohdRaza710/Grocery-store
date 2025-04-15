@@ -80,8 +80,7 @@ function Products({ onAddToCart }) {
 
   
 
-
-    return (
+return (
         <div style={{ width: '100%' }}>
             <Grid container spacing={2}>
                 {products.map((product, index) => (
@@ -149,4 +148,4 @@ function Products({ onAddToCart }) {
     );
 }
 
-export default Products;
+export default Products
