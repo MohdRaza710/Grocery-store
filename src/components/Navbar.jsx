@@ -4,11 +4,11 @@ import Toolbar from '@mui/material/Toolbar';
 import { Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 
 function Navbar({ cartCount }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -22,7 +22,7 @@ function Navbar({ cartCount }) {
 
     const drawerContent = (
         <Box
-            className="width-20"
+            sx={{ width: 250 }}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
@@ -35,57 +35,63 @@ function Navbar({ cartCount }) {
         </Box>
     );
 
+
+
     return (
         <AppBar position="static" sx={{ backgroundColor: '#2E3B55', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)', borderRadius: '8px' }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link to="/" sx={{ display: { xs: 'block', sm: 'none' } }}>
-                    <Box
-                        component="img"
-                        src="https://i.ibb.co/PZQdxx6t/Chat-GPT-Image-Apr-14-2025-03-59-42-PM.png"
-                        alt="Logo"
-                        sx={{ height: 40, borderRadius: '8px' }}
-                    />
-                </Link>
-                <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', flexGrow: 1 }}>
+                {/* Left: Logo (mobile only) */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <Box
+                            component="img"
+                            src="https://i.ibb.co/PZQdxx6t/Chat-GPT-Image-Apr-14-2025-03-59-42-PM.png"
+                            alt="Logo"
+                            sx={{ height: { xs: 40, sm: 50 }, borderRadius: '8px' }}
+                        />
+                    </Link>
                     <Box
                         component="span"
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
                             fontFamily: 'Arial, sans-serif',
                             fontWeight: 'bold',
-                            fontSize: '1rem',
-                            ml: 1,
+                            fontSize: { xs: '1rem', sm: '1.25rem' },
                             color: '#FFD700',
+                            ml:2
                         }}
                     >
                         Grocery Store
                     </Box>
                 </Box>
-                <Link
-                   to="/cart"
-                style={{
-                display: 'flex',
-                fontWeight: 'bold',
-                color: '#FFD700',
-                textDecoration: 'none',
-                alignItems: 'center',
-             }}
-               >
-                <ShoppingCartIcon /> ({cartCount})
-                </Link>
-                <IconButton
-                    size="large"
-                    edge="end"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ display: { xs: 'block', sm: 'none' } }}
-                    onClick={toggleDrawer(true)}
-                >
-                    <MenuIcon sx={{ fontSize: 32 }} />
-                </IconButton>
 
+                {/* Right: Cart and Menu Icon (mobile only) */}
+                <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', gap: 1 }}>
+                    <Box
+                        component={Link}
+                        to="/cart"
+                        style={{ textDecoration: 'none' }}
+                        sx={{
+                            fontWeight: 'bold',
+                            color: '#FDC700',
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <ShoppingCartIcon />
+                        ({cartCount})
+                    </Box>
+                    <IconButton
+                        size="large"
+                        edge="end"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={toggleDrawer(true)}
+                    >
+                        <MenuIcon sx={{ fontSize: 32 }} />
+                    </IconButton>
+                </Box>
+
+                {/* Drawer for nav items */}
                 <Drawer
                     anchor="right"
                     open={drawerOpen}
@@ -95,8 +101,8 @@ function Navbar({ cartCount }) {
                     {drawerContent}
                 </Drawer>
 
-                {/* Desktop Buttons */}
-                <div className="hidden sm:flex gap-2">
+                {/* Desktop Nav Buttons */}
+                <Box className="hidden sm:flex gap-2">
                     <Link
                         to="/home"
                         className="font-bold text-yellow-400 rounded-lg px-4 py-2 hover:text-white transition-colors duration-200 hover:bg-yellow-400"
@@ -117,15 +123,15 @@ function Navbar({ cartCount }) {
                     </Link>
                     <Link
                         to="/cart"
-                        className="font-bold text-yellow-400 rounded-lg mr-5 flex items-center gap-1 transition-colors duration-200 px-4 py-2
-                         hover:bg-yellow-400 hover:text-white"
+                        className="font-bold text-yellow-400 rounded-lg mr-5 flex items-center gap-1 transition-colors duration-200 px-4 py-2 hover:bg-yellow-400 hover:text-white"
                     >
                         <ShoppingCartIcon />
                         ({cartCount})
                     </Link>
-                </div>
+                </Box>
             </Toolbar>
         </AppBar>
+
     );
 }
 
